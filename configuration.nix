@@ -102,5 +102,12 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     source-han-sans-simplified-chinese
     source-han-sans-traditional-chinese
     ubuntu_font_family
-  ];  
+  ]; 
+
+  nixpkgs.config = {
+    virtualbox.enableExtensionPack = true;
+    pulseaudio = true;
+    allowUnfree = true;
+  };
+ 
 }
