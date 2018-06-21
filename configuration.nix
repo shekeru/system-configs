@@ -102,7 +102,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       };
       displayManager = {
           auto = {
-              enable = enable;
+              enable = true;
               user = "sheks";
           };
         };
