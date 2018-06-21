@@ -25,7 +25,6 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     defaultLocale = "en_US.UTF-8";
   };
 
-  fonts.fonts = with pkgs; [dejavu_fonts liberation_ttf];  
   home-manager.users.sheks = {
     home.file.".xmonad/xmonad.hs".source = src/xmonad/xmonad.hs;
     home.file.".Xdefaults".source = src/Xdefaults;
@@ -93,4 +92,15 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     };
   };
 
+  fonts.fonts = with pkgs; [ 
+    corefonts
+    dejavu_fonts
+    inconsolata
+    liberation_ttf
+    source-han-sans-japanese
+    source-han-sans-korean
+    source-han-sans-simplified-chinese
+    source-han-sans-traditional-chinese
+    ubuntu_font_family
+  ];  
 }
