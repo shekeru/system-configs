@@ -100,6 +100,12 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
           haskellPackages.xmonad
         ];
       };
+      displayManager = {
+          auto = {
+              enable = true;
+              user = "sheks";
+          };
+        };
       layout = "us";
     };
     compton = {
