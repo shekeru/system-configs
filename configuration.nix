@@ -45,7 +45,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     home.file.".urxvt/ext/".source = src/urxvt;
   };
 
-  security.sudo.enable = true;
+  security.sudo.enable = false;
 
   users.extraUsers.sheks = {
     description = "Sheky Sheks";
@@ -102,7 +102,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       };
       displayManager = {
           auto = {
-              enable = true;
+              enable = false;
               user = "sheks";
           };
         };
