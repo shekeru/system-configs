@@ -75,12 +75,15 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
           haskellPackages.xmonad
         ];
       };
-      displayManager = {
-          auto = {
-              enable = true;
-              user = "sheks";
-          };
-        };
+      desktopManager.default = "none";
+      displayManager.lightdm = {
+        enable = true;
+        extraSeatDefaults = ''
+          greeter-show-manual-login=false
+          greeter-hide-users=true
+          allow-guest=false
+        '';
+      };
       layout = "us";
     };
     compton = {
