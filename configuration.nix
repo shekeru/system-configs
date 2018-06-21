@@ -66,8 +66,8 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   # services.printing.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
   # hardware.pulseaudio.enable = true;
+  sound.enable = true;
 
   # Enable the X11 windowing system.
   services = {
