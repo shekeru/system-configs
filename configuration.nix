@@ -67,6 +67,17 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  # System Dicks Fuckery
+  systemd.user.services."urxvtd" = {
+    enable = true;
+    description = "rxvt unicode daemon";
+    wantedBy = [ "default.target" ];
+    path = [ pkgs.rxvt_unicode ];
+    serviceConfig.Restart = "always";
+    serviceConfig.RestartSec = 2;
+    serviceConfig.ExecStart = "${pkgs.rxvt_unicode}/bin/urxvtd -q -o";
+  };
+
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   sound.enable = true;
