@@ -82,7 +82,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     xserver = {
       enable = true;
       layout = "us";
-      windowManger = {
+      windowManager = {
         xmonad.enable = true;
         xmonad.enableContribAndExtras = true;
       };
