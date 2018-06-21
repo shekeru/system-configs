@@ -74,11 +74,16 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     openssh.enable = true;
     xserver = {
       enable = true;
-      layout = "us";
-      windowManager = {
-        xmonad.enable = true;
-        xmonad.enableContribAndExtras = true;
+      windowManager.xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+        extraPackages = haskellPackages: [
+          haskellPackages.xmonad-contrib
+          haskellPackages.xmonad-extras
+          haskellPackages.xmonad
+        ];
       };
+      layout = "us";
     };
   };
 
