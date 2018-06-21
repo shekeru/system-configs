@@ -23,7 +23,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
 
   # International Settings
   i18n = {
-    consoleFont = "Lat2-DejaVuSansMono16";
+    consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
