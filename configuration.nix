@@ -47,9 +47,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     uid = 1000;
   };
 
-  programs.fish.enableCompletion = true;
   programs.fish.enable = true;
-
   systemd.user.services."urxvtd" = {
     enable = true;
     description = "rxvt unicode daemon";
