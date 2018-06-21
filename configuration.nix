@@ -1,4 +1,3 @@
-
 { config, pkgs, ... }:
 
 {
@@ -40,6 +39,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   ];
 
   home-manager.users.sheks = {
+    home.file.".Xdefaults".source = src/Xdefaults;
     home.file.".gitconfig".source = src/gitconfig;
   };
 
