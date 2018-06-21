@@ -43,6 +43,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     home.file.".Xdefaults".source = src/Xdefaults;
     home.file.".gitconfig".source = src/gitconfig;
     home.file.".urxvt/ext/".source = src/urxvt;
+    home.file."nix-update.sh".source = update.sh;
   };
 
   security.sudo.enable = true;
