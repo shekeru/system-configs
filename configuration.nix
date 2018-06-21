@@ -39,7 +39,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     # Xmonad Requirements
   ];
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.fish;
   users.extraUsers.sheks = {
     description = "Sheky Sheks";
     extraGroups = ["wheel"];
@@ -47,8 +47,8 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     uid = 1000;
   };
 
-  programs.zsh.enableCompletion = true;
-  programs.zsh.enable = true;
+  programs.fish.enableCompletion = true;
+  programs.fish.enable = true;
 
   systemd.user.services."urxvtd" = {
     enable = true;
@@ -78,6 +78,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
           haskellPackages.xmonad
         ];
       };
+      displayManager.xterm.enable = false;
       displayManager = {
           auto = {
               enable = true;
