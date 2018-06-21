@@ -33,7 +33,15 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
 
   # System Installed Packages (for all users?)
   environment.systemPackages = with pkgs; [
-    wget git
+    wget git stack rxvt_unicode binutils nix
+    # Xmonad Requirements
+    haskellPackages.haskellPlatform
+    haskellPackages.xmonadContrib
+    haskellPackages.xmonadExtras
+    haskellPackages.xmobar
+    haskellPackages.xmonad
+
+
   ];
 
   home-manager.users.sheks = {
