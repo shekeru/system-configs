@@ -99,6 +99,13 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       };
       layout = "us";
     };
+    compton = {
+      enable          = true;
+      fade            = true;
+      inactiveOpacity = "0.9";
+      shadow          = true;
+      fadeDelta       = 4;
+    };
   };
 
 }
