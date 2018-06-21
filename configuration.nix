@@ -8,7 +8,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      "${builtins.fetchTarball 
+https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
+
+  home-manager.users.sheks = {
+    home.file.".gitconfig".source = ./git-config;
+  };
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -74,7 +80,6 @@
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.sheks = {
     description = "Sheky Sheks";
     extraGroups = ["wheel"];
