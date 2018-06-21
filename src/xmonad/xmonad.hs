@@ -21,7 +21,5 @@ main = xmonad $ defaultConfig
 	  layoutHook = myLayout,
 	  borderWidth = 1,
 	  normalBorderColor = "#f1f1f1",
-	  focusedBorderColor = "#2970c4"}
-	  borderWidth = 0,
-	  normalBorderColor = "#100D0F",
-	  focusedBorderColor = "#433B32"}
+	  focusedBorderColor = "#2970c4"
+	}
