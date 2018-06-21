@@ -35,7 +35,6 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   environment.systemPackages = with pkgs; [
     wget git stack rxvt_unicode binutils nix
     # Xmonad Requirements
-    haskellPackages.haskellPlatform
     haskellPackages.xmonadContrib
     haskellPackages.xmonadExtras
     haskellPackages.xmobar
