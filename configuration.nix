@@ -13,7 +13,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
 
   home-manager.users.sheks = {
-    home.file.".gitconfig".source = ./gitconfig;
+    home.file.".gitconfig".source = src/gitconfig;
   };
 
   # Use the GRUB 2 boot loader.
