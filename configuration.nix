@@ -79,7 +79,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       displayManager.lightdm = {
         enable = true;
         extraSeatDefaults = ''
-          greeter-show-manual-login=false
+          greeter-show-manual-login=true
           greeter-hide-users=true
           allow-guest=false
         '';
