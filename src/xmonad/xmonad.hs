@@ -3,7 +3,7 @@ import XMonad.Util.EZConfig
 import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
-import XMonad.Layout.NoFrillsDecoration
+import XMonad.Layout.SimpleFloat
 
 myTheme = defaultTheme { activeColor = "#f7a050",
 						 inactiveColor = "#ff8267",
@@ -14,12 +14,12 @@ myTheme = defaultTheme { activeColor = "#f7a050",
 						 decoHeight = 24,
 						 fontName = "xft:Liberation Mono For Powerline:size=9" }
 
-myLayout = noFrillsDeco shrinkText myTheme $ gaps [(U,50), (D,50), (L,75), (R,75)] $ spacing 10 $ emptyBSP
+myLayout = gaps [(U,50), (D,50), (L,75), (R,75)] $ spacing 10 $ emptyBSP
 
 main = xmonad $ defaultConfig
 	{ terminal = "urxvt",
 	  layoutHook = myLayout,
 	  borderWidth = 0,
-	  normalBorderColor = "#100D0F",
-	  focusedBorderColor = "#433B32"}
+	  normalBorderColor = "#f1f1f1",
+	  focusedBorderColor = "#2970c4"}
 
