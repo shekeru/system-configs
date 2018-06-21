@@ -27,7 +27,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     defaultLocale = "en_US.UTF-8";
   };
 
-  fonts.fonts = with pkgs; [dejavu_fonts, liberation_ttf];
+  fonts.fonts = with pkgs; [dejavu_fonts liberation_ttf];
 
   # Timezones & Misc
   time.timeZone = "US/Eastern";
