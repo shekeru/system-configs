@@ -1,3 +1,5 @@
 [user]
 	name = Sheky Sheks
 	email = sheks@desu.systems
+[credential]
+	helper = store
