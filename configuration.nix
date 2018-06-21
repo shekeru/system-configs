@@ -42,6 +42,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     home.file.".xmonad/xmonad.hs".source = src/xmonad/xmonad.hs;
     home.file.".Xdefaults".source = src/Xdefaults;
     home.file.".gitconfig".source = src/gitconfig;
+    home.file.".urxvt/ext/".source = src/urxvt;
   };
 
   users.extraUsers.sheks = {
