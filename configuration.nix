@@ -78,6 +78,16 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     serviceConfig.RestartSec = 2;
     serviceConfig.ExecStart = "${pkgs.rxvt_unicode}/bin/urxvtd -q -o";
   };
+  systemd.user.services."compton" = {
+    enable = true;
+    description = "";
+    wantedBy = [ "default.target" ];
+    path = [ pkgs.compton ];
+    serviceConfig.Type = "forking";
+    serviceConfig.Restart = "always";
+    serviceConfig.RestartSec = 2;
+    serviceConfig.ExecStart = "${pkgs.compton}/bin/compton -b --config /home/joedicastro/.compton.conf";
+  };
 
   # Enable sound.
   # hardware.pulseaudio.enable = true;
