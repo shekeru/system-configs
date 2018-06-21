@@ -9,6 +9,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
   
   # Update Whenever (Ask Amel)
+  networking.hostName = "shitbox";
   system.stateVersion = "18.03"; 
 
   # Use the GRUB 2 boot loader.
@@ -16,28 +17,15 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
-  # Networking/Internet Config
-  networking.hostName = "shitbox";
-  # networking.wireless.enable = true;
+  time.timeZone = "US/Eastern";
 
-  # International Settings
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
 
-  fonts.fonts = with pkgs; [dejavu_fonts liberation_ttf];
-
-  # Timezones & Misc
-  time.timeZone = "US/Eastern";
-
-  # System Installed Packages (for all users?)
-  environment.systemPackages = with pkgs; [
-    wget git stack rxvt_unicode binutils nix
-    # Xmonad Requirements
-  ];
-
+  fonts.fonts = with pkgs; [dejavu_fonts liberation_ttf];  
   home-manager.users.sheks = {
     home.file.".xmonad/xmonad.hs".source = src/xmonad/xmonad.hs;
     home.file.".Xdefaults".source = src/Xdefaults;
@@ -46,7 +34,12 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   };
 
   security.sudo.wheelNeedsPassword = false;
+  environment.systemPackages = with pkgs; [
+    wget git stack rxvt_unicode binutils nix
+    # Xmonad Requirements
+  ];
 
+  users.defaultUserShell = pkgs.zsh;
   users.extraUsers.sheks = {
     description = "Sheky Sheks";
     extraGroups = ["wheel"];
@@ -54,24 +47,9 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     uid = 1000;
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.bash.enableCompletion = true;
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.zsh.enableCompletion = true;
+  programs.zsh.enable = true;
 
-  # List services that you want to enable:
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = false;
-
-  # System Dicks Fuckery
   systemd.user.services."urxvtd" = {
     enable = true;
     description = "rxvt unicode daemon";
