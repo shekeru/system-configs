@@ -69,7 +69,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   # networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  # services.printing.enable = false;
 
   # System Dicks Fuckery
   systemd.user.services."urxvtd" = {
