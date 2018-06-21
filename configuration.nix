@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
 
@@ -11,38 +8,44 @@
       "${builtins.fetchTarball 
 https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
-
-  home-manager.users.sheks = {
-    home.file.".gitconfig".source = src/gitconfig;
-  };
+  
+  # Update Whenever (Ask Amel)
+  system.stateVersion = "18.03"; 
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "shitbox"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Networking/Internet Config
+  networking.hostName = "shitbox";
+  # networking.wireless.enable = true;
 
-  # Select internationalisation properties.
+  # International Settings
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
 
-  # Set your time zone.
+  # Timezones & Misc
   time.timeZone = "US/Eastern";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # System Installed Packages (for all users?)
   environment.systemPackages = with pkgs; [
     wget git
   ];
+
+  home-manager.users.sheks = {
+    home.file.".gitconfig".source = src/gitconfig;
+  };
+
+  users.extraUsers.sheks = {
+    description = "Sheky Sheks";
+    extraGroups = ["wheel"];
+    isNormalUser = true;
+    uid = 1000;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -79,18 +82,5 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-
-  users.extraUsers.sheks = {
-    description = "Sheky Sheks";
-    extraGroups = ["wheel"];
-    isNormalUser = true;
-    uid = 1000;
-  };
-
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
-  system.stateVersion = "18.03"; # Did you read the comment?
 
 }
