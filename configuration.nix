@@ -55,9 +55,6 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -72,15 +69,16 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   # hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
+  services = {
+    openssh.enable = true;
+    xserver = {
+      enable = true;
+      layout = "us";
+      windowManger = {
+        xmonad.enable = true;
+        xmonad.enableContribAndExtras = true;
+      };
+    };
+  };
 
 }
