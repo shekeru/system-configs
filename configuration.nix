@@ -35,7 +35,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   security.sudo.wheelNeedsPassword = false;
   environment.systemPackages = with pkgs; [
     wget git stack rxvt_unicode binutils nix mkpasswd
-    kernelPackages.virtualboxGuestAdditions
+    virtualboxGuestAdditions
     # Xmonad Requirements
   ];
 
