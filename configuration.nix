@@ -4,13 +4,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      "${builtins.fetchTarball 
+      "${builtins.fetchTarball
 https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
-  
+
   # Update Whenever (Ask Amel)
   networking.hostName = "shitbox";
-  system.stateVersion = "18.03"; 
+  system.stateVersion = "18.03";
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -39,6 +39,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     # Xmonad Requirements
   ];
 
+  users.mutableUsers = false;
   users.defaultUserShell = pkgs.fish;
   users.extraUsers.sheks = {
     hashedPassword = "$6$Gt0O1/wg6$ouOi0bA16sFWsGaQHAmVhDIZDYATXonLzZKBjrSY0J9QLpbMwOOCUz9UR/hnrWAgTqw9QaZlVQdrmNTCkgdqb1";
@@ -98,7 +99,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     };
   };
 
-  fonts.fonts = with pkgs; [ 
+  fonts.fonts = with pkgs; [
     corefonts
     dejavu_fonts
     inconsolata
@@ -108,11 +109,11 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     source-han-sans-simplified-chinese
     source-han-sans-traditional-chinese
     ubuntu_font_family
-  ]; 
+  ];
 
   nixpkgs.config = {
     virtualbox.enableExtensionPack = true;
     pulseaudio = true; allowUnfree = true;
   };
- 
+
 }
