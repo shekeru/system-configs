@@ -34,12 +34,14 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
 
   security.sudo.wheelNeedsPassword = false;
   environment.systemPackages = with pkgs; [
-    wget git stack rxvt_unicode binutils nix
+    wget git stack rxvt_unicode binutils nix mkpasswd
+    kernelPackages.virtualboxGuestAdditions
     # Xmonad Requirements
   ];
 
   users.defaultUserShell = pkgs.fish;
   users.extraUsers.sheks = {
+    hashedPassword = "$6$Gt0O1/wg6$ouOi0bA16sFWsGaQHAmVhDIZDYATXonLzZKBjrSY0J9QLpbMwOOCUz9UR/hnrWAgTqw9QaZlVQdrmNTCkgdqb1";
     description = "Sheky Sheks";
     extraGroups = ["wheel"];
     isNormalUser = true;
@@ -75,6 +77,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
           haskellPackages.xmonad
         ];
       };
+      videoDriver = "virtualbox";
       desktopManager.default = "none";
       displayManager.lightdm = {
         enable = true;
@@ -109,8 +112,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
 
   nixpkgs.config = {
     virtualbox.enableExtensionPack = true;
-    pulseaudio = true;
-    allowUnfree = true;
+    pulseaudio = true; allowUnfree = true;
   };
  
 }
