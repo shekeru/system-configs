@@ -18,9 +18,9 @@ urxvt.matcher.button: C1
 !! Change font size on Control-Plus/Minus
 !! URxvt.keysym.Control-0x2b: perl:font-size:increase
 !! URxvt.keysym.Control-0x2d: perl:font-size:decrease
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+!! URxvt.keysym.M-c:   perl:clipboard:copy
+!! URxvt.keysym.M-v:   perl:clipboard:paste
+!! URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
 !! Yeah, I am one of those, who use these keys in Vim :-(
 urxvt.keysym.Home:          \033[1~

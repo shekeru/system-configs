@@ -27,7 +27,6 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
 
   home-manager.users.sheks = {
     home.file.".xmonad/xmonad.hs".source = src/xmonad/xmonad.hs;
-    home.file.".xmonad/hooks".source = src/xmonad/hooks;
     home.file.".Xdefaults".source = src/Xdefaults;
     home.file.".gitconfig".source = src/gitconfig;
     home.file.".urxvt/ext/".source = src/urxvt;
@@ -36,7 +35,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   security.sudo.wheelNeedsPassword = false;
   environment.systemPackages = with pkgs; [
     wget git stack rxvt_unicode binutils nix mkpasswd
-    linuxPackages.virtualboxGuestAdditions feh
+    linuxPackages.virtualboxGuestAdditions feh xclip
     # Xmonad Requirements
   ];
 

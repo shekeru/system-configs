@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Load background image
-feh --bg-scale /etc/nixos/wallpaper.jpg

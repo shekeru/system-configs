@@ -4,7 +4,6 @@ import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
 import XMonad.Layout.SimpleFloat
-import XMonad.Hooks.Script
 
 myLayout = gaps [(U,50), (D,50), (L,75), (R,75)] (spacing 10 emptyBSP)
 
@@ -16,6 +15,5 @@ main = xmonad $ defaultConfig {
 	focusedBorderColor = "#2970c4",
 	startupHook = do
 		spawn "feh --bg-scale /etc/nixos/wallpaper.jpg"
-		execScriptHook "startup"
 		spawn "urxvt"
 	}
