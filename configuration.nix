@@ -36,7 +36,8 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   environment.systemPackages = with pkgs; [
     wget git stack rxvt_unicode binutils nix mkpasswd
     linuxPackages.virtualboxGuestAdditions feh xclip
-    # Xmonad Requirements
+    atom elixir python3 erlang clojure leiningen
+    llvmPackages.libclang gnumake
   ];
 
   users.mutableUsers = false;
