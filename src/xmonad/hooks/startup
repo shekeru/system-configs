@@ -1,1 +1,5 @@
-feh --bg-fill /etc/nixos/wallpaper.png
+#!/bin/bash
+
+# Load background image
+feh --bg-scale /etc/nixos/wallpaper.png
+firefox &
