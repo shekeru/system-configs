@@ -4,8 +4,9 @@ import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
 import XMonad.Layout.SimpleFloat
+import XMonad.Hooks.Script
 
-myLayout = gaps [(U,50), (D,50), (L,75), (R,75)] $ spacing 10 $ emptyBSP
+myLayout = gaps [(U,50), (D,50), (L,75), (R,75)] (spacing 10 emptyBSP)
 
 main = xmonad $ defaultConfig
 	{ terminal = "urxvt",
