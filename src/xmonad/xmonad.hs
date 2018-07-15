@@ -17,5 +17,5 @@ main = xmonad $ defaultConfig {
 	startupHook = do
 		spawn "feh --bg-scale /etc/nixos/wallpaper.png"
 		execScriptHook "startup"
-		spawn fish
+		spawn "urxvt"
 	}

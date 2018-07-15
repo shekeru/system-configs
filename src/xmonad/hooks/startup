@@ -2,4 +2,4 @@
 
 # Load background image
 feh --bg-scale /etc/nixos/wallpaper.png
-firefox &
+firefox&
