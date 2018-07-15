@@ -12,5 +12,6 @@ main = xmonad $ defaultConfig
 	  layoutHook = myLayout,
 	  borderWidth = 0,
 	  normalBorderColor = "#f1f1f1",
-	  focusedBorderColor = "#2970c4"}
-
+	  focusedBorderColor = "#2970c4",
+		startupHook = execScriptHook "startup"
+	}
