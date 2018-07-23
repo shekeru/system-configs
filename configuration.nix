@@ -39,7 +39,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     linuxPackages.virtualboxGuestAdditions feh xclip
     atom elixir python3 erlang clojure leiningen
     llvmPackages.libclang gnumake google-chrome
-    gnupg fortune
+    gnupg fortune wirelesstools
   ];
 
   users.mutableUsers = false;
