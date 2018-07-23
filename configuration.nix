@@ -26,6 +26,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   };
 
   home-manager.users.sheks = {
+    home.file.".config/fish/functions/".source = src/functions;
     home.file.".xmonad/xmonad.hs".source = src/xmonad/xmonad.hs;
     home.file.".Xdefaults".source = src/Xdefaults;
     home.file.".gitconfig".source = src/gitconfig;
@@ -38,7 +39,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     linuxPackages.virtualboxGuestAdditions feh xclip
     atom elixir python3 erlang clojure leiningen
     llvmPackages.libclang gnumake google-chrome
-    gnupg
+    gnupg fortune
   ];
 
   users.mutableUsers = false;
