@@ -14,6 +14,6 @@ main = xmonad $ defaultConfig {
 	normalBorderColor = "#f1f1f1",
 	focusedBorderColor = "#2970c4",
 	startupHook = do
-		spawn "feh --bg-scale /etc/nixos/wallpaper.jpg"
+		spawn "feh --bg-scale /etc/nixos/wallpaper.jpg&"
 		spawn "urxvt"
 	}

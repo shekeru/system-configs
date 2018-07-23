@@ -87,7 +87,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
         extraSeatDefaults = ''
           greeter-show-manual-login=true
           greeter-hide-users=true
-          default-user=sheks
+          autologin-user=sheks
           allow-guest=false
         '';
       };
