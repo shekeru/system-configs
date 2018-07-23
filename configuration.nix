@@ -37,7 +37,8 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     wget git stack rxvt_unicode binutils nix mkpasswd
     linuxPackages.virtualboxGuestAdditions feh xclip
     atom elixir python3 erlang clojure leiningen
-    llvmPackages.libclang gnumake
+    llvmPackages.libclang gnumake google-chrome
+    gnupg
   ];
 
   users.mutableUsers = false;
@@ -86,6 +87,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
         extraSeatDefaults = ''
           greeter-show-manual-login=true
           greeter-hide-users=true
+          default-user=sheks
           allow-guest=false
         '';
       };
