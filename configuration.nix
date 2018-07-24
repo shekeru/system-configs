@@ -67,9 +67,12 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   };
 
   # Enable sound.
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-  sound.enable = true;
+  hardware.pulseaudio = {
+    package = pkgs.pulseaudioFull;
+    enable = true; extraConfig = ''
+      load-module module-switch-on-connect
+    ''; support32Bit = true;
+  }; sound.enable = true;
 
   # Enable the X11 windowing system.
   services = {
