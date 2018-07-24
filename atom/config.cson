@@ -1,0 +1,16 @@
+"*":
+  "autocomplete-plus":
+    confirmCompletion: "tab always, enter when suggestion explicitly selected"
+  core:
+    disabledPackages: [
+      "wrap-guide"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "smyck"
+    ]
+  "exception-reporting":
+    userId: "c6a0aad0-f333-4b93-8f11-99a6f8390b1d"
+  welcome:
+    showOnStartup: false

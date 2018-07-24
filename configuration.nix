@@ -29,10 +29,14 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   };
 
   home-manager.users.sheks = {
-    home.file.".config/fish/functions/".source = src/functions;
-    home.file.".xmonad/xmonad.hs".source = src/xmonad/xmonad.hs;
-    home.file.".Xdefaults".source = src/Xdefaults;
+    # Git configs
     home.file.".gitconfig".source = src/gitconfig;
+    # Shell Scripts
+    home.file.".config/fish/functions/".source = src/functions;
+    # Window Manager
+    home.file.".xmonad/xmonad.hs".source = src/xmonad/xmonad.hs;
+    # Xorg Fuckery
+    home.file.".Xdefaults".source = src/Xdefaults;
     home.file.".urxvt/ext/".source = src/urxvt;
   };
 
@@ -42,7 +46,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     linuxPackages.virtualboxGuestAdditions feh xclip
     atom elixir python3 erlang clojure leiningen
     llvmPackages.libclang gnumake google-chrome
-    gnupg fortune wirelesstools
+    gnupg fortune wirelesstools acpi gvfs htop
   ];
 
   users.mutableUsers = false;
@@ -94,6 +98,8 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       displayManager.lightdm = {
         enable = true;
         extraSeatDefaults = ''
+          session-cleanup-script=/etc/nixos/ldm/logout.sh
+          session-setup-script=/etc/nixos/ldm/login.sh
           greeter-show-manual-login=true
           greeter-hide-users=true
           autologin-user=sheks
@@ -126,6 +132,14 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   nixpkgs.config = {
     virtualbox.enableExtensionPack = true;
     pulseaudio = true; allowUnfree = true;
+  };
+
+  system.activationScripts.misc = {
+    text = ''
+      ln -sfn /etc/nixos/atom/config.cson /home/sheks/.atom/config.cson
+      ln -sfn /etc/nixos /home/sheks/configs
+      chown sheks:users -R /etc/nixos
+    ''; deps = [];
   };
 
 }
