@@ -98,7 +98,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       displayManager.lightdm = {
         enable = true;
         extraSeatDefaults = ''
-          session-cleanup-script=/etc/nixos/ldm/logout.sh
+          session-startup-script=/etc/nixos/ldm/cycle.sh
           greeter-show-manual-login=true
           greeter-hide-users=true
           autologin-user=sheks
