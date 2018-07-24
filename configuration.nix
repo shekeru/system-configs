@@ -68,6 +68,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
 
   # Enable sound.
   hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
   sound.enable = true;
 
   # Enable the X11 windowing system.
