@@ -12,7 +12,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   system.stateVersion = "18.03";
   networking = {
     hostName = "shitbox";
-    wireless.enable = true;
+    # wireless.enable = true;
   };
 
   # Use the GRUB 2 boot loader.
@@ -50,7 +50,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   users.extraUsers.sheks = {
     hashedPassword = "$6$Gt0O1/wg6$ouOi0bA16sFWsGaQHAmVhDIZDYATXonLzZKBjrSY0J9QLpbMwOOCUz9UR/hnrWAgTqw9QaZlVQdrmNTCkgdqb1";
     description = "Sheky Sheks";
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "audio"];
     isNormalUser = true;
     uid = 1000;
   };
@@ -67,7 +67,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   };
 
   # Enable sound.
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = true;
   sound.enable = true;
 
   # Enable the X11 windowing system.
@@ -84,7 +84,8 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
           haskellPackages.xmonad
         ];
       };
-      videoDriver = "virtualbox";
+      synaptics.enable = true;
+      # videoDriver = "virtualbox";
       desktopManager.default = "none";
       displayManager.lightdm = {
         enable = true;
