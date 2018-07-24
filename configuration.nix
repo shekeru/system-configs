@@ -98,7 +98,6 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       displayManager.lightdm = {
         enable = true;
         extraSeatDefaults = ''
-          session-startup-script=/etc/nixos/ldm/cycle.sh
           greeter-show-manual-login=true
           greeter-hide-users=true
           autologin-user=sheks
@@ -136,7 +135,6 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   system.activationScripts.misc = {
     text = ''
       ln -sfn /run/current-system/sw/bin/bash /bin/bash
-      ln -sfn /etc/nixos/atom/config.cson /home/sheks/.atom/config.cson
       ln -sfn /etc/nixos /home/sheks/configs
       chown sheks:users -R /etc/nixos
     ''; deps = [];
