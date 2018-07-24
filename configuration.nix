@@ -99,7 +99,6 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
         enable = true;
         extraSeatDefaults = ''
           session-cleanup-script=/etc/nixos/ldm/logout.sh
-          session-setup-script=/etc/nixos/ldm/login.sh
           greeter-show-manual-login=true
           greeter-hide-users=true
           autologin-user=sheks
