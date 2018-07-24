@@ -9,8 +9,11 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
 
   # Update Whenever (Ask Amel)
-  networking.hostName = "shitbox";
   system.stateVersion = "18.03";
+  networking = {
+    hostName = "shitbox";
+    wireless.enable = true;
+  };
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
