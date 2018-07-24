@@ -12,7 +12,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   system.stateVersion = "18.03";
   networking = {
     hostName = "shitbox";
-    # wireless.enable = true;
+    wireless.enable = true;
   };
 
   # Use the GRUB 2 boot loader.
