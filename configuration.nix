@@ -38,6 +38,7 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     # Xorg Fuckery
     home.file.".Xdefaults".source = src/Xdefaults;
     home.file.".urxvt/ext/".source = src/urxvt;
+    home.file.".Xmodmap".source = src/Xmodmap;
   };
 
   security.sudo.wheelNeedsPassword = false;
