@@ -6,7 +6,7 @@ import XMonad.Layout.Gaps
 import XMonad.Layout.SimpleFloat
 
 --myLayout = gaps [(U, 24), (D, 24), (L, 36), (R,36)] (spacing 10 emptyBSP)
-myLayout = gaps [(U, 0), (D, 0), (L, 0), (R, 0)] (spacing 10 emptyBSP)
+myLayout = gaps [(U, 0), (D, 0), (L, 0), (R, 0)] (spacing 0 emptyBSP)
 
 main = xmonad $ defaultConfig {
 	terminal = "urxvt",
