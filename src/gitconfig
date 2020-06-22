@@ -1,0 +1,8 @@
+[user]
+	name = Sheky Sheks
+	email = sheks@desu.systems
+	signingkey = 177B9E55B1B926B2
+[credential]
+	helper = store
+[commit]
+	gpgsign = true
