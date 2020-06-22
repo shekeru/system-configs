@@ -1,38 +1,46 @@
-!! Appearance
-urxvt.termName: rxvt-unicode
-urxvt.scrollBar: false
-urxvt.background: black
-urxvt.foreground: gray
 !! Font prefferenes
 urxvt.font: xft:DejaVu Sans Mono:style=Book:pixelsize=13
 urxvt.boldFont: xft:DejaVu Sans Mono:style=Bold:pixelsize=13
 urxvt.letterSpace: -1
-!! Larger history limit
-urxvt.saveLines: 100000
 
-!! Perl extensions
-urxvt.perl-ext-common: default, matcher, font-size
-!! Open urls in browser with Control-Click
-urxvt.urlLauncher: /usr/bin/firefox
-urxvt.matcher.button: C1
+!! New Terminal Theme
+urxvt.scrollBar: false
+urxvt.cursorUnderline: 1
+urxvt.saveLines: 10000
 
-!! Tango color theme
-URxvt.cursorUnderline:1
-!! Strange - it matches tango from gnome-terminal, but looks different
-URxvt.color0: rgb:00/00/00
-URxvt.color1: rgb:CC/00/00
-URxvt.color2: rgb:4E/9A/06
-URxvt.color3: rgb:C4/A0/00
-URxvt.color4: rgb:34/65/A4
-URxvt.color5: rgb:75/50/7B
-URxvt.color6: rgb:06/98/9A
-URxvt.color7: rgb:D3/D7/CF
-URxvt.color8: rgb:55/57/53
-URxvt.color9: rgb:EF/29/29
-URxvt.color10: rgb:8A/E2/34
-URxvt.color11: rgb:FC/E9/4F
-URxvt.color12: rgb:72/9F/CF
-URxvt.color13: rgb:AD/7F/A8
-URxvt.color14: rgb:34/E2/E2
-URxvt.color15: rgb:EE/EE/EC
-URxvt.colorBD: rgb:ff/ff/ff
+! special
+*.foreground:   #b5b8b6
+*.background:   #040709
+*.cursorColor:  #c5c8c6
+
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
+
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6

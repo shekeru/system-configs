@@ -23,9 +23,10 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    wget git rxvt_unicode feh xclip htop fortune 
+    wget git rxvt_unicode feh xclip htop fortune
     google-chrome stack zlib nix binutils xmobar
-    atom neofetch scrot
+    atom neofetch scrot discord python38
+    pcmanfm
   ];
 
   # Enable sound.
@@ -47,8 +48,8 @@
       }; desktopManager.default = "none+xmonad";
       displayManager.startx.enable = true;
     }; compton = {
+      inactiveOpacity = "0.85";
       enable = true; fade = true;
-      inactiveOpacity = "0.95";
       shadow = true; fadeDelta = 4;
     };
   };
@@ -95,4 +96,3 @@
   ];
 
 }
-

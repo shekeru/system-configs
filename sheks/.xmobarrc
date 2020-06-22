@@ -10,7 +10,12 @@ Config {
 	"--high", "#e06c75", 
 	"--low", "lightblue"
     ] 36000,
-    Run Network "enp0s3" ["-t", "Send: <tx> kB/s, Recv: <rx> kB/s"] 10,
+    Run Network "enp0s3" [
+	"-t", "Send: <tx> kB/s, Recv: <rx> kB/s",
+	"-L", "102400", "--low", "lightblue",
+	"-H", "409600", "--high", "#d19a66",
+	"--normal", "#98c379"
+    ] 10,
     Run Cpu [
 	"-L","1","-H", "32", 
 	"--normal", "#98c379", 
