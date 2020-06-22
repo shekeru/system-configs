@@ -25,7 +25,7 @@
   environment.systemPackages = with pkgs; [
     wget git rxvt_unicode feh xclip htop fortune 
     google-chrome stack zlib nix binutils xmobar
-    atom neofetch
+    atom neofetch scrot
   ];
 
   # Enable sound.
@@ -46,8 +46,7 @@
         ];
       }; desktopManager.default = "none+xmonad";
       displayManager.startx.enable = true;
-    };
-    compton = {
+    }; compton = {
       enable = true; fade = true;
       inactiveOpacity = "0.95";
       shadow = true; fadeDelta = 4;
@@ -87,6 +86,13 @@
       Restart = "always"; RestartSec = 2;
     };
   };
+
+  fonts.fonts = with pkgs; [
+    corefonts dejavu_fonts
+    inconsolata liberation_ttf
+    source-han-sans-japanese
+    ubuntu_font_family
+  ];
 
 }
 
