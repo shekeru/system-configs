@@ -1,0 +1,12 @@
+Config {
+  font = "xft:Bitstream Vera Sans Mono:size=8:regular:antialias=true",
+  fgColor= "#828997", bgColor = "#21252b", position = Top,
+  commands = [
+    Run Weather "KWDR" ["-t", "<station> <tempF>F", "-L", "60", "-H", "75", "--normal", "#98c379", "--high", "#e06c75", "--low", "lightblue"] 36000,
+    Run Cpu ["-L","0","-H", "32", "--normal", "#98c379", "--high", "#e06c75"] 10,
+    Run Memory ["-t", "Mem: <usedratio>%"] 10, Run Swap [] 10,
+    Run Com "uname" ["-sr"] "" 36000,
+    Run Date "%H:%M - %a %d" "date" 100
+  ], sepChar = "%", alignSep = "^^",
+  template = " %uname% | %KWDR% ^^ %cpu% | %memory% | %swap% | <fc=#d19a66>%date%</fc> "
+}

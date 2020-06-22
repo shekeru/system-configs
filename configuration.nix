@@ -1,89 +1,41 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      "${builtins.fetchTarball
-https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
-    ];
-
-  # Update Whenever (Ask Amel)
-  system.stateVersion = "18.03";
-  networking = {
-    hostName = "shitbox";
-    wireless.enable = true;
-  };
-
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
-
-  time.timeZone = "US/Eastern";
-
-  i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "us";
-    defaultLocale = "en_US.UTF-8";
-  };
-
-  home-manager.users.sheks = {
-    # Git configs
-    home.file.".gitconfig".source = src/gitconfig;
-    # Shell Scripts
-    home.file.".config/fish/functions/".source = src/functions;
-    # Window Manager
-    home.file.".xmonad/xmonad.hs".source = src/xmonad/xmonad.hs;
-    # Xorg Fuckery
-    home.file.".Xdefaults".source = src/Xdefaults;
-    home.file.".urxvt/ext/".source = src/urxvt;
-    home.file.".Xmodmap".source = src/Xmodmap;
-  };
-
-  security.sudo.wheelNeedsPassword = false;
-  environment.systemPackages = with pkgs; [
-    wget git stack rxvt_unicode binutils nix mkpasswd
-    linuxPackages.virtualboxGuestAdditions feh xclip
-    atom elixir python3 erlang clojure leiningen
-    llvmPackages.libclang gnumake google-chrome
-    gnupg fortune wirelesstools acpi gvfs htop
+  imports = [
+    /etc/nixos/hardware-configuration.nix
   ];
 
-  users.mutableUsers = false;
-  users.defaultUserShell = pkgs.fish;
-  users.extraUsers.sheks = {
-    hashedPassword = "$6$Gt0O1/wg6$ouOi0bA16sFWsGaQHAmVhDIZDYATXonLzZKBjrSY0J9QLpbMwOOCUz9UR/hnrWAgTqw9QaZlVQdrmNTCkgdqb1";
-    description = "Sheky Sheks";
-    extraGroups = ["wheel" "audio"];
-    isNormalUser = true;
-    uid = 1000;
-  };
-
-  programs.fish.enable = true;
-  systemd.user.services."urxvtd" = {
+  # Use the GRUB 2 boot loader.
+  boot.loader.grub = {
+    device = "/dev/sda";
     enable = true;
-    description = "rxvt unicode daemon";
-    wantedBy = [ "default.target" ];
-    path = [ pkgs.rxvt_unicode ];
-    serviceConfig.Restart = "always";
-    serviceConfig.RestartSec = 2;
-    serviceConfig.ExecStart = "${pkgs.rxvt_unicode}/bin/urxvtd -q -o";
-  };
+    version = 2;
+  }; networking.hostName = "ghetto";
+
+  networking.useDHCP = false;
+  networking.interfaces.enp0s3.useDHCP = true;
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "Lat2-Terminus16"; keyMap = "us";
+  }; time.timeZone = "US/Eastern";
+
+  # List packages installed in system profile. To search, run:
+  environment.systemPackages = with pkgs; [
+    wget git rxvt_unicode feh xclip htop fortune 
+    google-chrome stack zlib nix binutils xmobar
+    atom neofetch
+  ];
 
   # Enable sound.
-  hardware.pulseaudio = {
-    package = pkgs.pulseaudioFull;
-    enable = true; extraConfig = ''
-      load-module module-switch-on-connect
-    ''; support32Bit = true;
-  }; sound.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
-  # Enable the X11 windowing system.
   services = {
     openssh.enable = true;
     xserver = {
-      enable = true;
+      enable = true; layout = "us";
       windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;
@@ -92,53 +44,49 @@ https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
           haskellPackages.xmonad-extras
           haskellPackages.xmonad
         ];
-      };
-      synaptics.enable = true;
-      # videoDriver = "virtualbox";
-      desktopManager.default = "none";
-      displayManager.lightdm = {
-        enable = true;
-        extraSeatDefaults = ''
-          greeter-show-manual-login=true
-          greeter-hide-users=true
-          autologin-user=sheks
-          allow-guest=false
-        '';
-      };
-      layout = "us";
+      }; desktopManager.default = "none+xmonad";
+      displayManager.startx.enable = true;
     };
     compton = {
-      enable          = true;
-      fade            = true;
-      inactiveOpacity = "0.9";
-      shadow          = true;
-      fadeDelta       = 4;
+      enable = true; fade = true;
+      inactiveOpacity = "0.95";
+      shadow = true; fadeDelta = 4;
     };
   };
 
-  fonts.fonts = with pkgs; [
-    corefonts
-    dejavu_fonts
-    inconsolata
-    liberation_ttf
-    source-han-sans-japanese
-    source-han-sans-korean
-    source-han-sans-simplified-chinese
-    source-han-sans-traditional-chinese
-    ubuntu_font_family
-  ];
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.defaultUserShell = pkgs.fish;
+  security.sudo.wheelNeedsPassword = false;
+  users.users.sheks = {
+    description = "Shekychan";
+    isNormalUser = true;
+    extraGroups = [ "wheel" "audio"];
+    uid = 1000;
+  }; system.stateVersion = "20.03";
 
   nixpkgs.config = {
-    virtualbox.enableExtensionPack = true;
+    virtualbox.enableExtenstionPack = true;
     pulseaudio = true; allowUnfree = true;
   };
 
   system.activationScripts.misc = {
     text = ''
-      ln -sfn /run/current-system/sw/bin/bash /bin/bash
-      ln -sfn /etc/nixos /home/sheks/configs
       chown sheks:users -R /etc/nixos
+      ln -sfn /run/current-system/sw/bin/bash /bin/bash
+      cp -rsf /etc/nixos/sheks /home/
+      chown sheks:users -R /home/sheks
     ''; deps = [];
   };
 
+  systemd.user.services."urxvtd" = {
+    enable = true;
+    wantedBy = ["default.target"];
+    path = [pkgs.rxvt_unicode];
+    serviceConfig = {
+      ExecStart = "${pkgs.rxvt_unicode}/bin/urxvtd -q -o";
+      Restart = "always"; RestartSec = 2;
+    };
+  };
+
 }
+
