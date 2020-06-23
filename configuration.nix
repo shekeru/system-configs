@@ -1,16 +1,16 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+  ];
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub = {
     device = "/dev/sda";
     enable = true;
     version = 2;
   };
-
-  imports = [
-    /etc/nixos/hardware-configuration.nix
-  ];
 
   networking = {
     hostName = "ghetto"; useDHCP = false;
@@ -26,13 +26,18 @@
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     wget git rxvt_unicode feh xclip htop fortune
+    vscode atom neofetch scrot discord glib gnupg
     google-chrome stack zlib nix binutils xmobar
-    atom vscode neofetch scrot discord python38
-    glib pcmanfm
+    
   ];
 
+  nixpkgs.config = {
+    virtualbox.enableExtenstionPack = true;
+    pulseaudio = true; allowUnfree = true;
+  };
+
+  # Mostly Display
   services = {
-    openssh.enable = true;
     xserver = {
       enable = true; layout = "us";
       windowManager.xmonad = {
@@ -49,7 +54,7 @@
       inactiveOpacity = "0.85";
       enable = true; fade = true;
       shadow = true; fadeDelta = 4;
-    };
+    }; openssh.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -61,20 +66,26 @@
     extraGroups = [ "wheel" "audio"];
   }; system.stateVersion = "20.03";
 
-  nixpkgs.config = {
-    virtualbox.enableExtenstionPack = true;
-    pulseaudio = true; allowUnfree = true;
-  };
-
+  # Startup Scripts
   system.activationScripts.misc = {
     text = ''
       chown sheks:users -R /etc/nixos
       ln -sfn /run/current-system/sw/bin/bash /bin/bash
       cp -rsf /etc/nixos/sheks /home/
       chown sheks:users -R /home/sheks
+      mkdir /home/sheks/testing
     ''; deps = [];
   };
 
+  # Program Configs
+  programs = {
+    gnupg.agent = {
+      enableSSHSupport = true;
+      enable = true; 
+    };
+  };
+
+  # Line History I think
   systemd.user.services."urxvtd" = {
     enable = true;
     wantedBy = ["default.target"];
@@ -89,6 +100,7 @@
   hardware.pulseaudio.enable = true;
   sound.enable = true;
 
+  # Extra Fonts
   fonts.fonts = with pkgs; [
     corefonts dejavu_fonts
     inconsolata liberation_ttf

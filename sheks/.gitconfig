@@ -1,7 +1,8 @@
 [user]
-	name = Sheky Sheks
+	signingkey = 52B91F3A4F2A27C7
 	email = sheks@desu.systems
+	name = Shekychan
 [credential]
 	helper = store
 [commit]
-	gpgsign = false
+	gpgsign = true

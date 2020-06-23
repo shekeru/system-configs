@@ -4,10 +4,10 @@ Config {
   border = BottomB, borderColor = "#2c323c",
   commands = [
     Run Weather "KWDR" [
-	"-t", "<station>, <tempF>°F", 
-	"-L", "60", "-H", "75", 
-	"--normal", "#98c379", 
-	"--high", "#e06c75", 
+	"-t", "<station>, <tempF>°F",
+	"-L", "60", "-H", "75",
+	"--normal", "#98c379",
+	"--high", "#e06c75",
 	"--low", "lightblue"
     ] 36000,
     Run Network "enp0s3" [
@@ -17,13 +17,21 @@ Config {
 	"--normal", "#98c379"
     ] 10,
     Run Cpu [
-	"-L","1","-H", "32", 
-	"--normal", "#98c379", 
-	"--high", "#e06c75", 
+	"-L","1","-H", "32",
+	"--normal", "#98c379",
+	"--high", "#e06c75",
 	"--low", "lightblue"
     ] 10,
-    Run Memory ["-L", "1", "-t", "Mem: <usedratio>%", "--normal", "#98c379", "--low", "lightblue"] 10, 
-    Run Swap ["-L", "1", "--normal", "#98c379", "--low", "lightblue"] 10,
+    Run Memory [
+      "-t", "Mem: <usedratio>%",
+      "--normal", "#d19a66",
+      "-L", "41", "--low", "#98c379",
+      "-H", "62", "--high", "#e06c75"
+    ] 10,
+    Run Swap [
+      "--normal", "#98c379",
+      "-L", "1", "--low", "lightblue"
+    ] 10,
     Run DiskU [("/", "Disk: <free>")] [
 	"-L", "5", "-H", "50",
 	"--high", "#98c379",
@@ -31,11 +39,12 @@ Config {
 	"--low", "#e06c75"
     ] 20,
     Run Volume "default" "Master" [
-	"-t", "Vol: <status><volume></fc>%","--", 
+	"-t", "Vol: <status><volume></fc>%","--",
 	"--on", "<fc=#000>", "--onc", "#98c379",
         "--off", "<fc=#000>", "--offc", "#e06c75"
     ] 10,
     Run Com "uname" ["-sr"] "" 36000, Run Com "whoami" [] "" 36000, Run Com "hostname" [] "" 36000,
     Run Date "<fc=#d19a66>%a %d</fc> - <fc=#d19a66>%H:%M</fc>" "date" 100
-  ], sepChar = "%", alignSep = "^^",  template = " <<fc=lightblue>%whoami%</fc>@<fc=#98c379>%hostname%</fc>> | %date% | %KWDR% | %default:Master% ^^ %enp0s3% | %cpu% | %memory% | %swap% | %disku% "
+  ], sepChar = "%", alignSep = "^^", template = 
+    " <fc=lightblue>%whoami%</fc>@<fc=#98c379>%hostname%</fc> | %date% | %KWDR% | %default:Master% ^^ %enp0s3% | %cpu% | %memory% | %swap% | %disku% "
 }
