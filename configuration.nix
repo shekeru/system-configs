@@ -29,7 +29,6 @@
     vscode atom neofetch scrot discord glib gnupg
     google-chrome stack zlib nix binutils xmobar
     ghc ruby python38 python38Packages.pip
-    x11_ssh_askpass
   ];
 
   nixpkgs.config = {
