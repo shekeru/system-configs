@@ -1,5 +1,6 @@
 #!/bin/bash
 xrdb -merge .Xresources
+export ELECTRON_TRASH=gio
 # Dbus Fixes
 if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
 	eval $(dbus-launch --exit-with-session --sh-syntax)

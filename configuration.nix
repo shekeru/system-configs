@@ -1,19 +1,21 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    /etc/nixos/hardware-configuration.nix
-  ];
-
   # Use the GRUB 2 boot loader.
   boot.loader.grub = {
     device = "/dev/sda";
     enable = true;
     version = 2;
-  }; networking.hostName = "ghetto";
+  };
 
-  networking.useDHCP = false;
-  networking.interfaces.enp0s3.useDHCP = true;
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+  ];
+
+  networking = {
+    hostName = "ghetto"; useDHCP = false;
+    interfaces.enp0s3.useDHCP = true;
+  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -25,13 +27,9 @@
   environment.systemPackages = with pkgs; [
     wget git rxvt_unicode feh xclip htop fortune
     google-chrome stack zlib nix binutils xmobar
-    atom neofetch scrot discord python38
-    pcmanfm
+    atom vscode neofetch scrot discord python38
+    glib pcmanfm
   ];
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   services = {
     openssh.enable = true;
@@ -59,9 +57,8 @@
   security.sudo.wheelNeedsPassword = false;
   users.users.sheks = {
     description = "Shekychan";
-    isNormalUser = true;
+    uid = 1000; isNormalUser = true;
     extraGroups = [ "wheel" "audio"];
-    uid = 1000;
   }; system.stateVersion = "20.03";
 
   nixpkgs.config = {
@@ -87,6 +84,10 @@
       Restart = "always"; RestartSec = 2;
     };
   };
+
+  # Enable sound.
+  hardware.pulseaudio.enable = true;
+  sound.enable = true;
 
   fonts.fonts = with pkgs; [
     corefonts dejavu_fonts
