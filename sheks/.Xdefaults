@@ -1,4 +1,4 @@
-!! Font prefferenes
+!! Font Shit
 urxvt.font: xft:DejaVu Sans Mono:style=Book:pixelsize=13
 urxvt.boldFont: xft:DejaVu Sans Mono:style=Bold:pixelsize=13
 urxvt.letterSpace: -1

@@ -12,5 +12,8 @@ fi
 # Extras
 feh --bg-scale /etc/nixos/wallpaper.jpg &
 xmobar &
+# Compton
+systemctl --user import-environment &
+systemctl --user start graphical-session.target &
 # Start WM
 exec xmonad

@@ -51,9 +51,10 @@
       }; #desktopManager.default = "none+xmonad";
       displayManager.startx.enable = true;
     }; compton = {
+      enable = true; shadow = true; 
+      fade = true; fadeDelta = 4;
       inactiveOpacity = "0.85";
-      enable = true; fade = true;
-      shadow = true; fadeDelta = 4;
+      activeOpacity = "0.95";
     }; openssh.enable = true;
   };
 
