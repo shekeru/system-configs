@@ -28,7 +28,7 @@
     wget git rxvt_unicode feh xclip htop fortune
     vscode atom neofetch scrot discord glib gnupg
     google-chrome stack zlib nix binutils xmobar
-    
+    python39 ruby
   ];
 
   nixpkgs.config = {
