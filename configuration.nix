@@ -74,9 +74,10 @@
       cp -rsf /etc/nixos/sheks /home/
     ''; deps = [];
   };
-
+  
   # Program Configs
   programs = {
+    ssh.askPassword = "";
     gnupg.agent = {
       enableSSHSupport = true;
       enable = true; 
