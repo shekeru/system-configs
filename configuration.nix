@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
-
-{
+let 
+  NewAskPass = "${pkgs.lxqt.lxqt-openssh-askpass}/bin/lxqt-openssh-askpass";
+in {
   imports = [
     /etc/nixos/hardware-configuration.nix
   ];
@@ -23,17 +24,35 @@
     font = "Lat2-Terminus16"; keyMap = "us";
   }; time.timeZone = "US/Eastern";
 
+  nixpkgs.config = {
+    virtualbox.enableExtenstionPack = true;
+    pulseaudio = true; allowUnfree = true;
+  };
+
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     wget git rxvt_unicode feh xclip htop fortune
     vscode atom neofetch scrot discord glib gnupg
     google-chrome stack zlib nix binutils xmobar
     ghc ruby python38 python38Packages.pip
+    python38Packages.jupyter
+    lxqt.lxqt-openssh-askpass
+    gvfs pcmanfm
   ];
 
-  nixpkgs.config = {
-    virtualbox.enableExtenstionPack = true;
-    pulseaudio = true; allowUnfree = true;
+  environment.sessionVariables = {
+    SSH_ASKPASS = NewAskPass;
+    ELECTRON_TRASH = "gio";
+    EDITOR = "code";
+  };
+
+  # Program Configs
+  programs = {
+    ssh.askPassword = NewAskPass;
+    gnupg.agent = {
+      enableSSHSupport = true;
+      enable = true; 
+    };
   };
 
   # Mostly Display
@@ -70,19 +89,11 @@
   # Startup Scripts
   system.activationScripts.misc = {
     text = ''
+      export SSH
       chown sheks:users -R /etc/nixos
       ln -sfn /run/current-system/sw/bin/bash /bin/bash
       cp -rsf /etc/nixos/sheks /home/
     ''; deps = [];
-  };
-  
-  # Program Configs
-  programs = {
-    ssh.askPassword = "";
-    gnupg.agent = {
-      enableSSHSupport = true;
-      enable = true; 
-    };
   };
 
   # Line History I think
