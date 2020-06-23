@@ -24,13 +24,14 @@ Config {
     ] 10,
     Run Memory [
       "-t", "Mem: <usedratio>%",
-      "--normal", "#d19a66",
-      "-L", "41", "--low", "#98c379",
-      "-H", "62", "--high", "#e06c75"
+      "--normal", "#98c379",
+      "-H", "62", "--high", "#d19a66",
+      "-L", "1", "--low", "lightblue"
     ] 10,
     Run Swap [
       "--normal", "#98c379",
-      "-L", "1", "--low", "lightblue"
+      "-L", "1", "--low", "lightblue",
+      "-H", "39", "--high", "#e06c75"
     ] 10,
     Run DiskU [("/", "Disk: <free>")] [
 	"-L", "5", "-H", "50",

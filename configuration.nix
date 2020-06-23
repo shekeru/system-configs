@@ -28,7 +28,7 @@
     wget git rxvt_unicode feh xclip htop fortune
     vscode atom neofetch scrot discord glib gnupg
     google-chrome stack zlib nix binutils xmobar
-    python39 ruby
+    ghc ruby python38 python38Packages.pip
   ];
 
   nixpkgs.config = {
@@ -72,8 +72,6 @@
       chown sheks:users -R /etc/nixos
       ln -sfn /run/current-system/sw/bin/bash /bin/bash
       cp -rsf /etc/nixos/sheks /home/
-      chown sheks:users -R /home/sheks
-      mkdir /home/sheks/testing
     ''; deps = [];
   };
 
