@@ -1,5 +1,5 @@
 ! swap Ctrl and Alt keys
-
+! Not currently used, idk why i have this
 clear control
 clear mod1
 keycode 37 = Alt_L Meta_L
