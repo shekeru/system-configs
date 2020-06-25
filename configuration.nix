@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let 
-  NewAskPass = "${pkgs.lxqt.lxqt-openssh-askpass}/bin/lxqt-openssh-askpass";
+  NewAskPass = "${pkgs.x11_ssh_askpass}/libexec/ssh-askpass";
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
@@ -36,7 +36,6 @@ in {
     google-chrome stack zlib nix binutils xmobar
     ghc ruby python38 python38Packages.pip
     python38Packages.jupyter
-    lxqt.lxqt-openssh-askpass
     gvfs pcmanfm
   ];
 
@@ -116,7 +115,7 @@ in {
     corefonts dejavu_fonts
     inconsolata liberation_ttf
     source-han-sans-japanese
-    ubuntu_font_family
+    ubuntu_font_family lemon
   ];
 
 }
