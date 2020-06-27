@@ -10,7 +10,7 @@ urxvt.saveLines: 10000
 
 ! special
 *.foreground:   #b5b8b6
-*.background:   #0a0707
+*.background:   #050709
 *.cursorColor:  #c5c8c6
 
 ! black

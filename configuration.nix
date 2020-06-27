@@ -68,7 +68,7 @@ in {
         ];
       }; #desktopManager.default = "none+xmonad";
       displayManager.startx.enable = true;
-    }; compton = {
+    }; picom = {
       enable = true; shadow = true; 
       fade = true; fadeDelta = 4;
       inactiveOpacity = "0.85";
@@ -82,8 +82,9 @@ in {
   users.users.sheks = {
     description = "Shekychan";
     uid = 1000; isNormalUser = true;
-    extraGroups = [ "wheel" "audio"];
+    extraGroups = [ "wheel" "audio" "docker"];
   }; system.stateVersion = "20.03";
+  virtualisation.docker.enable = true;
 
   # Startup Scripts
   system.activationScripts.misc = {
