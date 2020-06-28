@@ -10,7 +10,7 @@ Config {
 	"--high", "#e06c75",
 	"--low", "lightblue"
     ] 36000,
-    Run Network "enp0s3" [
+    Run DynNetwork [
 	"-t", "Send: <tx> kB/s, Recv: <rx> kB/s",
 	"-L", "102400", "--low", "lightblue",
 	"-H", "409600", "--high", "#d19a66",
@@ -47,5 +47,5 @@ Config {
     Run Com "uname" ["-sr"] "" 36000, Run Com "whoami" [] "" 36000, Run Com "hostname" [] "" 36000,
     Run Date "<fc=#d19a66>%a %d</fc> - <fc=#d19a66>%H:%M</fc>" "date" 100
   ], sepChar = "%", alignSep = "^^", template = 
-    " <fc=lightblue>%whoami%</fc>@<fc=#98c379>%hostname%</fc> | %date% | %KWDR% | %default:Master% ^^ %enp0s3% | %cpu% | %memory% | %swap% | %disku% "
+    " <fc=lightblue>%whoami%</fc>@<fc=#98c379>%hostname%</fc> | %date% | %KWDR% | %default:Master% ^^ %dynnetwork% | %cpu% | %memory% | %swap% | %disku% "
 }

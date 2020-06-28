@@ -14,8 +14,13 @@ in {
   };
 
   networking = {
-    hostName = "ghetto"; useDHCP = false;
-    interfaces.enp0s3.useDHCP = true;
+    hostName = "ghetto";
+    interfaces = {
+      enp0s3.useDHCP = true;
+      enp0s25.useDHCP = true;
+      wlp12s0.useDHCP = true;
+    }; useDHCP = false;
+    # wireless.enable = true;
   };
 
   # Select internationalisation properties.
@@ -31,12 +36,12 @@ in {
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    wget git rxvt_unicode feh xclip htop fortune
-    vscode atom neofetch scrot discord glib gnupg
-    google-chrome stack zlib nix binutils xmobar
-    ghc ruby python38 python38Packages.pip
-    python38Packages.jupyter
-    gvfs pcmanfm
+    xmobar rxvt_unicode feh xclip htop fortune glib
+    vscode atom neofetch ghc stack discord gnupg
+    wget git google-chrome zlib binutils scrot
+    ruby python38 python38Packages.pip 
+    python38Packages.jupyter mkpasswd
+    pcmanfm acpi wirelesstools
   ];
 
   environment.sessionVariables = {
@@ -57,6 +62,7 @@ in {
   # Mostly Display
   services = {
     xserver = {
+      synaptics.enable = true;
       enable = true; layout = "us";
       windowManager.xmonad = {
         enable = true;
@@ -89,7 +95,6 @@ in {
   # Startup Scripts
   system.activationScripts.misc = {
     text = ''
-      export SSH
       chown sheks:users -R /etc/nixos
       ln -sfn /run/current-system/sw/bin/bash /bin/bash
       cp -rsf /etc/nixos/sheks /home/
@@ -98,16 +103,15 @@ in {
 
   # Line History I think
   systemd.user.services."urxvtd" = {
-    enable = true;
     wantedBy = ["default.target"];
     path = [pkgs.rxvt_unicode];
     serviceConfig = {
       ExecStart = "${pkgs.rxvt_unicode}/bin/urxvtd -q -o";
       Restart = "always"; RestartSec = 2;
-    };
-  };
+    }; enable = true;
+  }; 
 
-  # Enable sound.
+  # Enable sound & devices
   hardware.pulseaudio.enable = true;
   sound.enable = true;
 
@@ -116,7 +120,7 @@ in {
     corefonts dejavu_fonts
     inconsolata liberation_ttf
     source-han-sans-japanese
-    ubuntu_font_family lemon
+    ubuntu_font_family
   ];
 
 }
