@@ -14,13 +14,9 @@ in {
   };
 
   networking = {
+    useDHCP = true;
     hostName = "ghetto";
-    interfaces = {
-      enp0s3.useDHCP = true;
-      enp0s25.useDHCP = true;
-      wlp12s0.useDHCP = true;
-    }; useDHCP = false;
-    # wireless.enable = true;
+    wireless.enable = true;
   };
 
   # Select internationalisation properties.
@@ -95,6 +91,7 @@ in {
   # Startup Scripts
   system.activationScripts.misc = {
     text = ''
+      touch /etc/wpa_supplicant.conf
       chown sheks:users -R /etc/nixos
       ln -sfn /run/current-system/sw/bin/bash /bin/bash
       cp -rsf /etc/nixos/sheks /home/
